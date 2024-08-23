@@ -276,7 +276,6 @@ const Result = () => {
       // Update state
       setAnalysis(responseData);
       setData(responseData);
-      // console.log(responseData);
       localStorage.setItem("roll_no", (responseData.Roll_No).slice(0, 2))
       localStorage.setItem("semester", responseData.semester)
       localStorage.setItem("name", responseData.Name)
@@ -288,6 +287,9 @@ const Result = () => {
 
 
       try {
+
+if(responseData.Result == "PASS"){
+
         let localTotalCredits = 0;
         let localTotalCreditPoints = 0;
 
@@ -372,6 +374,8 @@ const Result = () => {
 
         // Log the response for debugging
         // console.log("Upload response:", uploadResponse);
+
+      }
       } catch (error) {
         // Provide a more detailed error message and show a toast
         console.error("Error on student data:", error);
@@ -658,8 +662,8 @@ const Result = () => {
       <LoadingBar color="#f11946" ref={loadingBarRef} shadow={true} height={4} />
       <ToastContainer />
 
-      <h2 class="font-semibold m-auto flex justify-center text-xl  sm:hidden">Rajasthan Technical University</h2>
-      <p class="mb-4 flex justify-center sm:hidden">Result Analysis </p>
+      <h2 className="font-semibold m-auto flex justify-center text-xl  sm:hidden">Rajasthan Technical University</h2>
+      <p className="mb-4 flex justify-center sm:hidden">Result Analysis </p>
 
 
       {isExploding && data && data.Result == "PASS" && <ConfettiExplosion />}
@@ -925,7 +929,7 @@ const Result = () => {
 
                 {data && data.Result != "FAIL" && (
                   <div className="bg-white sm:bg-gray-50 rounded-lg mt-6 sm:p-5 sm:border sm:border-gray-200 mb-20 flex flex-col m-auto sm:flex-row sm:w-full">
-                    <button type="button" class="text-white bg-blue-600 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center dark:focus:ring-[#F7BE38]/50 w-fit inline-flex" onClick={downloadPDF}>
+                    <button type="button" className="text-white bg-blue-600 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center dark:focus:ring-[#F7BE38]/50 w-fit inline-flex" onClick={downloadPDF}>
                       <svg
                         id="Layer_1"
                         data-name="Layer 1"
@@ -945,7 +949,7 @@ const Result = () => {
                     </button>
 
 
-                    <button type="button" class="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center dark:focus:ring-[#F7BE38]/50 hidden sm:inline-flex ml-3" onClick={() => { localStorage.clear(); window.location.reload(); }}>
+                    <button type="button" className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center dark:focus:ring-[#F7BE38]/50 hidden sm:inline-flex ml-3" onClick={() => { localStorage.clear(); window.location.reload(); }}>
                       <svg
                         version="1.1"
                         id="Layer_1"
@@ -973,7 +977,7 @@ const Result = () => {
                       Clear My Data
                     </button>
 
-                    <button class="text-center text-blue-500 underline mt-4 font-semibold block sm:hidden" onClick={() => { localStorage.clear(); window.location.reload(); }}>Check Another </button>
+                    <button className="text-center text-blue-500 underline mt-4 font-semibold block sm:hidden" onClick={() => { localStorage.clear(); window.location.reload(); }}>Check Another </button>
 
 
 

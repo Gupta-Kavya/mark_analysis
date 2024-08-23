@@ -103,7 +103,7 @@ const Leaderboard = () => {
             Semester - {localStorage.getItem("semester")} Leaderboard
           </div>
 
-          <div className="grid grid-cols-1 gap-0 overflow-auto sm:grid-cols-3 sm:gap-8">
+          <div className="grid grid-cols-1 gap-0 overflow-auto sm:grid-cols-3 sm:gap-20">
             <div className='flex flex-col relative right-0 top-0 w-full mt-6 mr-6 sm:fixed sm:w-1/4'>
               <div className="bg-white p-4 rounded-lg h-fit border border-gray-200 mb-6 sm:mb-0 hidden sm:block">
                 <h2 className="font-semibold mb-2">Your Rank in Semester {localStorage.getItem("semester")}</h2>
@@ -175,7 +175,7 @@ const Leaderboard = () => {
                         </div>
                         <img className="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 mr-4" src={`https://avatar.iran.liara.run/public?id=${Math.floor(100000 + Math.random() * 900000)}`} alt="Bordered avatar" />
                         <div>
-                          <div className="font-semibold text-gray-700 uppercase">{firstName(topStudent.Name)}****</div>
+                          <div className="font-semibold text-gray-700 uppercase">{firstName(topStudent.Name)}**** {(topStudent.Name).trim() === (localStorage.getItem("name")).trim() && topStudent.semester === localStorage.getItem("semester") && localStorage.setItem('user_rank', topStudent.rank)}</div>
                           <div className="flex items-center text-sm text-gray-500 mt-1">
                             <span className="bg-transparent sm:bg-yellow-100 text-yellow-700 sm:px-2 py-1 rounded-full">
                               CGPA : {topStudent.Cgpa}
@@ -266,13 +266,13 @@ const Leaderboard = () => {
         :
 
 
-        <div class="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800" role="alert">
-          <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+        <div className="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800" role="alert">
+          <svg className="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
           </svg>
-          <span class="sr-only">Info</span>
+          <span className="sr-only">Info</span>
           <div>
-            <span class="font-medium">Leaderboard alert!</span> Please First upload your RTU Result to rank and view Leaderboard.
+            <span className="font-medium">Leaderboard alert!</span> Please First upload your RTU Result to rank and view Leaderboard.
           </div>
 
         </div>
